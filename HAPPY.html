@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng 20/10 - Gửi Các Bạn Nữ Trong Nhóm</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffb6c1, #ffc0cb, #ffd9e3);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: #8b0000;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .page {
+            display: none;
+            max-width: 800px;
+            width: 90%;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 10;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .active {
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #c71585;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        h1:hover {
+            transform: scale(1.05);
+            color: #ff1493;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #db7093;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #8b0000;
+        }
+
+        .wishes-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .wish-button {
+            background: linear-gradient(to bottom, #ff69b4, #db7093);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .wish-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
+            background: linear-gradient(to bottom, #ff1493, #c71585);
+        }
+
+        .back-button {
+            background: linear-gradient(to bottom, #6c757d, #5a6268);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+            background: linear-gradient(to bottom, #5a6268, #495057);
+        }
+
+        .wish-message {
+            display: none;
+            background-color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #ff69b4;
+            text-align: left;
+            animation: fadeIn 0.5s ease;
+            position: relative;
+        }
+
+        .wish-icon {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            font-size: 2rem;
+            background: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: bounce 1s infinite alternate;
+        }
+
+        .flower {
+            position: absolute;
+            font-size: 24px;
+            color: #ff69b4;
+            user-select: none;
+            z-index: 1;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        footer {
+            margin-top: 30px;
+            color: #8b0000;
+            font-size: 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .heart {
+            color: #ff1493;
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+        }
+
+        /* Hiệu ứng màu cầu vồng cho các lời chúc */
+        .rainbow-1 { background: linear-gradient(45deg, #FF6B6B, #FF8E53); }
+        .rainbow-2 { background: linear-gradient(45deg, #4ECDC4, #44A08D); }
+        .rainbow-3 { background: linear-gradient(45deg, #FFD166, #FF9E6D); }
+        .rainbow-4 { background: linear-gradient(45deg, #A166AB, #5073B8); }
+        .rainbow-5 { background: linear-gradient(45deg, #06D6A0, #1B9AAA); }
+        .rainbow-6 { background: linear-gradient(45deg, #FF9A8B, #FF6B6B); }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(105vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fall-heart {
+            0% { transform: translateY(-30px) rotate(0deg); }
+            100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes fall-star {
+            0% { transform: translateY(-30px) rotate(0deg); }
+            100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+        }
+
+        @keyframes fall-sparkle {
+            0% { transform: translateY(-30px) scale(1); }
+            50% { transform: translateY(50vh) scale(1.5); }
+            100% { transform: translateY(105vh) scale(0.5); opacity: 0; }
+        }
+
+        @keyframes fall-butterfly {
+            0% { transform: translateY(-30px) rotate(0deg); }
+            25% { transform: translateY(25vh) rotate(90deg); }
+            50% { transform: translateY(50vh) rotate(180deg); }
+            75% { transform: translateY(75vh) rotate(270deg); }
+            100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes fall-confetti {
+            0% { transform: translateY(-30px) rotate(0deg); }
+            100% { transform: translateY(105vh) rotate(720deg) translateX(100px); opacity: 0; }
+        }
+
+        @keyframes fall-petal {
+            0% { transform: translateY(-30px) rotate(0deg); }
+            100% { transform: translateY(105vh) rotate(180deg) translateX(-50px); opacity: 0; }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .wishes-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .page {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Trang 1: Chào mừng -->
+    <div id="page1" class="page active">
+        <h1 onclick="nextPage()">Chúc Mừng 20/10!</h1>
+        <p class="subtitle">Nhấn vào dòng chữ để tiếp tục</p>
+    </div>
+    
+    <!-- Trang 2: Lời chúc -->
+    <div id="page2" class="page">
+        <h2>Gửi các bạn nữ trong nhóm</h2>
+        <p class="subtitle">Chọn một lời chúc để xem</p>
+        
+        <div class="wishes-container">
+            <button class="wish-button rainbow-1" onclick="showWish(0)">Lời Chúc 1</button>
+            <button class="wish-button rainbow-2" onclick="showWish(1)">Lời Chúc 2</button>
+            <button class="wish-button rainbow-3" onclick="showWish(2)">Lời Chúc 3</button>
+            <button class="wish-button rainbow-4" onclick="showWish(3)">Lời Chúc 4</button>
+            <button class="wish-button rainbow-5" onclick="showWish(4)">Lời Chúc 5</button>
+            <button class="wish-button rainbow-6" onclick="showWish(5)">Lời Chúc 6</button>
+        </div>
+        
+        <div id="wish-message" class="wish-message"></div>
+        
+        <button class="back-button" onclick="goBack()">Quay lại trang chính</button>
+    </div>
+    
+    <footer>
+        <p>Với tất cả sự trân trọng và yêu thương <span class="heart">❤️</span></p>
+    </footer>
+
+    <script>
+        // Danh sách các lời chúc và icon
+        const wishes = [
+            { 
+                text: "Chúc các bạn nữ luôn xinh đẹp, rạng ngời và tỏa sáng như những đóa hoa rực rỡ nhất. Ngày 20/10 thật ý nghĩa và hạnh phúc!",
+                icon: "🌸",
+                effect: "heart"
+            },
+            { 
+                text: "Nhân ngày Phụ nữ Việt Nam, chúc các bạn luôn mạnh khỏe, thành công trong công việc và hạnh phúc trong cuộc sống. Các bạn xứng đáng nhận được những điều tốt đẹp nhất!",
+                icon: "💝",
+                effect: "star"
+            },
+            { 
+                text: "Gửi đến các bạn nữ - những người tuyệt vời nhất. Chúc các bạn luôn giữ được nụ cười tươi, sự duyên dáng và trái tim ấm áp. 20/10 vui vẻ!",
+                icon: "✨",
+                effect: "sparkle"
+            },
+            { 
+                text: "Chúc các bạn nữ luôn tự tin, mạnh mẽ và kiên cường. Các bạn là nguồn cảm hứng cho tất cả chúng ta. Ngày 20/10 tràn ngập niềm vui!",
+                icon: "🌟",
+                effect: "butterfly"
+            },
+            { 
+                text: "Nhân ngày đặc biệt này, xin gửi lời chúc tốt đẹp nhất đến các bạn nữ. Chúc các bạn luôn hạnh phúc, thành công và nhận được nhiều yêu thương!",
+                icon: "🎀",
+                effect: "confetti"
+            },
+            { 
+                text: "Các bạn nữ xứng đáng với tất cả những điều tuyệt vời nhất trên đời. Chúc các bạn một ngày 20/10 thật ý nghĩa, ấm áp và tràn ngập niềm vui!",
+                icon: "💐",
+                effect: "petal"
+            }
+        ];
+
+        // Biến để lưu interval hiện tại
+        let currentEffectInterval = null;
+
+        // Chuyển trang
+        function nextPage() {
+            document.getElementById('page1').classList.remove('active');
+            document.getElementById('page2').classList.add('active');
+        }
+
+        // Quay lại trang chính
+        function goBack() {
+            document.getElementById('page2').classList.remove('active');
+            document.getElementById('page1').classList.add('active');
+            
+            // Ẩn lời chúc nếu đang hiển thị
+            document.getElementById('wish-message').style.display = 'none';
+            
+            // Khởi động lại hiệu ứng hoa rơi mặc định
+            if (currentEffectInterval) {
+                clearInterval(currentEffectInterval);
+            }
+            currentEffectInterval = setInterval(createFlower, 300);
+        }
+
+        // Hiển thị lời chúc
+        function showWish(index) {
+            const wishMessage = document.getElementById('wish-message');
+            wishMessage.innerHTML = `
+                <div class="wish-icon">${wishes[index].icon}</div>
+                <p>${wishes[index].text}</p>
+            `;
+            wishMessage.style.display = 'block';
+            
+            // Cuộn đến lời chúc
+            wishMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            // Dừng hiệu ứng hoa rơi hiện tại
+            if (currentEffectInterval) {
+                clearInterval(currentEffectInterval);
+            }
+            
+            // Bắt đầu hiệu ứng mới
+            startEffect(wishes[index].effect);
+        }
+
+        // Bắt đầu hiệu ứng rơi mới
+        function startEffect(effectType) {
+            switch(effectType) {
+                case 'heart':
+                    currentEffectInterval = setInterval(() => createFallingItem('❤️', 'fall-heart', '#ff6b6b'), 200);
+                    break;
+                case 'star':
+                    currentEffectInterval = setInterval(() => createFallingItem('⭐', 'fall-star', '#ffd166'), 250);
+                    break;
+                case 'sparkle':
+                    currentEffectInterval = setInterval(() => createFallingItem('✨', 'fall-sparkle', '#ff9a8b'), 150);
+                    break;
+                case 'butterfly':
+                    currentEffectInterval = setInterval(() => createFallingItem('🦋', 'fall-butterfly', '#a166ab'), 300);
+                    break;
+                case 'confetti':
+                    currentEffectInterval = setInterval(() => createFallingItem('🎉', 'fall-confetti', '#4ecdc4'), 180);
+                    break;
+                case 'petal':
+                    currentEffectInterval = setInterval(() => createFallingItem('🌸', 'fall-petal', '#ff6b6b'), 220);
+                    break;
+                default:
+                    currentEffectInterval = setInterval(createFlower, 300);
+            }
+        }
+
+        // Tạo vật thể rơi
+        function createFallingItem(symbol, animation, color) {
+            const item = document.createElement('div');
+            item.innerHTML = symbol;
+            item.classList.add('flower');
+            
+            // Vị trí ngẫu nhiên
+            item.style.left = Math.random() * 100 + 'vw';
+            item.style.top = '-30px';
+            
+            // Kích thước ngẫu nhiên
+            const size = Math.random() * 20 + 20;
+            item.style.fontSize = size + 'px';
+            item.style.color = color;
+            
+            // Tốc độ rơi ngẫu nhiên
+            const duration = Math.random() * 4 + 3;
+            item.style.animation = `${animation} ${duration}s linear forwards`;
+            
+            document.body.appendChild(item);
+            
+            // Xóa item sau khi rơi xong
+            setTimeout(() => {
+                if (item.parentNode) {
+                    item.remove();
+                }
+            }, duration * 1000);
+        }
+
+        // Tạo hiệu ứng hoa rơi mặc định
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.innerHTML = '❀';
+            flower.classList.add('flower');
+            
+            // Vị trí ngẫu nhiên
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.top = '-30px';
+            
+            // Kích thước ngẫu nhiên
+            const size = Math.random() * 20 + 15;
+            flower.style.fontSize = size + 'px';
+            
+            // Tốc độ rơi ngẫu nhiên
+            const duration = Math.random() * 5 + 5;
+            flower.style.animation = `fall ${duration}s linear forwards`;
+            
+            document.body.appendChild(flower);
+            
+            // Xóa hoa sau khi rơi xong
+            setTimeout(() => {
+                if (flower.parentNode) {
+                    flower.remove();
+                }
+            }, duration * 1000);
+        }
+
+        // Bắt đầu với hiệu ứng hoa rơi mặc định
+        currentEffectInterval = setInterval(createFlower, 300);
+    </script>
+</body>
+</html>
